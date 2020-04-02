@@ -1,5 +1,5 @@
 <?php
 
 function main() {
-    return "Hello world";
+    return "<html><body>Hello world</body></html>";
 }
