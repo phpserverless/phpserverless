@@ -1,5 +1,9 @@
-<html>
+@extends('guest/layout')
 
-<body>Hello world</body>
+@section('content')
 
-</html>
+<div class="container">
+    Hello world
+</div>
+
+@endsection

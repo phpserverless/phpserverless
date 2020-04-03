@@ -142,3 +142,50 @@ function blade($view, $data = [])
     $blade = new \Jenssegers\Blade\Blade(basePath('views'), basePath('tmp/cache'));
     return $blade->render($view, $data);
 }
+
+/**
+ * Joins multiple CSS files, and optionally minifies them
+ * @return string
+ */
+function joinCss($styles, $options = [])
+{
+    $minify = $options['minify'] ?? 'no';
+    $html = '';
+    $html .= '<style>';
+    foreach ($styles as $style) {
+        $path = basePath('public/' . trim($style, '/'));
+        // DEBUG: $html .= '/* '.$path.' */';
+        if (file_exists($path)) {
+            $contents = file_get_contents($path);
+            //if ($minify == "yes") {
+            //    $contents = ';' . \JSMin\JSMin::minify($contents);
+            //}
+            $html .= $contents;
+        }
+    }
+    $html .= '</style>';
+    return $html;
+}
+
+/**
+ * Joins multiple JavaScript files, and optionally minifies them
+ * @return string
+ */
+function joinScripts($scripts, $options = [])
+{
+    $minify = $options['minify'] ?? 'no';
+    $html = '';
+    $html .= '<script>';
+    foreach ($scripts as $script) {
+        $path = basePath('public/' . trim($script, '/'));
+        if (file_exists($path)) {
+            $contents = file_get_contents($path);
+            if ($minify == "yes") {
+                $contents = ';' . \JSMin\JSMin::minify($contents);
+            }
+            $html .= $contents;
+        }
+    }
+    $html .= '</script>';
+    return $html;
+}
