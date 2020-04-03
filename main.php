@@ -1,5 +1,7 @@
 <?php
 
-function main() {
-    return "<html><body>Hello world</body></html>";
+function main()
+{
+    require_once __DIR__ . '/app/functions.php';
+    return \App\Helpers\App::main();
 }

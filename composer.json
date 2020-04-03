@@ -21,6 +21,8 @@
   },
   "require": {
     "dg/composer-cleaner": "v2.1",
+    "jenssegers/blade": "^1.3",
+    "phroute/phroute": "^2.1",
     "sinevia/php-library-serverless": "^1.7"
   },
   "require-dev": {
