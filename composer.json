@@ -1,5 +1,7 @@
 {
     "name": "phpserverless/phpserverless",
+    "homepage": "https://github.com/phpserverless/phpserverless",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Milan Lesichkov",
