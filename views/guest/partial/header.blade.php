@@ -98,7 +98,7 @@
                 <td align="center" valign="middle">
                     &nbsp;
                 </td>
-                <td align="left" valign="middle" style="width:200px;">
+                <td align="right" valign="middle" style="width:200px;">
                     <button class="btn btn-md btn-box-tool" style="color:#333;background: white;" data-toggle="modal"
                         data-target="#ModalNavigationMenu">
                         &#9776; menu

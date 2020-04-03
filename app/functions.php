@@ -62,15 +62,19 @@ function config($key, $default = null)
  * Returns a database instance
  * @return \Sinevia\SqlDb
  */
-function db()
+function db($connectionName = null)
 {
     static $db = null;
     if (is_null($db)) {
-        $dbType = \Sinevia\Registry::get('DB_TYPE');
-        $dbHost = \Sinevia\Registry::get('DB_HOST');
-        $dbName = \Sinevia\Registry::get('DB_NAME');
-        $dbUser = \Sinevia\Registry::get('DB_USER');
-        $dbPass = \Sinevia\Registry::get('DB_PASS');
+
+        $databases = \Sinevia\Registry::get('DB');
+        $connection = $connectionName ?? $databases['default_connection'];
+        //dd($databases);
+        $dbType = $databases['connections'][$connection]['driver'];
+        $dbHost = $databases['connections'][$connection]['host'];
+        $dbName = $databases['connections'][$connection]['name'];;
+        $dbUser = $databases['connections'][$connection]['user'];;
+        $dbPass = $databases['connections'][$connection]['pass'];;
         $db = new \Sinevia\SqlDb(array(
             'database_type' => $dbType,
             'database_host' => $dbHost,
@@ -80,6 +84,11 @@ function db()
         ));
     }
     return $db;
+}
+function dd($var)
+{
+    \Sinevia\Utils::alert($var);
+    exit;
 }
 
 /**

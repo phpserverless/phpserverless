@@ -10,6 +10,13 @@ class App
         return $env[$key] ?? $default;
     }
 
+    public static function environment()
+    {
+
+        $env = \Sinevia\Registry::get("ENVIRONMENT");
+        return $env;
+    }
+
     public static function main()
     {
         //$uri = strtok($_SERVER["REQUEST_URI"], '?');
@@ -44,6 +51,12 @@ class App
 
         /* 2. Define routes */
         $router = new \Phroute\Phroute\RouteCollector();
+
+        $router->group(array('prefix' => '/api'), function (\Phroute\Phroute\RouteCollector $router) {
+            $router->controller('/auth', 'App\Controllers\Api\AuthController');
+            $router->controller('/', 'App\Controllers\Api\HomeController');
+        });
+
         $router->group(array('prefix' => '/'), function (\Phroute\Phroute\RouteCollector $router) {
             //$router->controller('/', 'App\Controllers\Guest\HomeController');
             $router->any('/{page}?', ['App\Controllers\Guest\WebController', 'anyPage']);

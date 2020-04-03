@@ -1,10 +1,14 @@
-.Header{
-    background: #996655;
+.Header {
+  background: #996655;
 }
 .Header .navbar-brand {
-    color:white;
+  color: white;
 }
-.Footer{
-    background: #996655;
-    color:white;
+.Footer {
+  background: #996655;
+  color: white;
+}
+.alert {
+  font-size: 12px;
+  font-weight: bold;
 }

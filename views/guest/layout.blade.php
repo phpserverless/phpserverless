@@ -70,6 +70,7 @@ $routeName = 'home';
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
         integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
     var APP_ID = ""; // Your APP unique ID
     var WEBSITE_URL = "<?php echo \Sinevia\Registry::get('URL_BASE'); ?>"; // Your website root URL
