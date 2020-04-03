@@ -1,5 +1,6 @@
 {
   "name": "phpserverless/phpserverless",
+  "description": "The Serverless PHP Framework",
   "homepage": "https://github.com/phpserverless/phpserverless",
   "license": "proprietary",
   "authors": [
