@@ -8,8 +8,9 @@ class PersonPlugin extends BasePlugin
     const NO = 'No';
     const STATUS_ACTIVE = 'Active';
     const STATUS_BANNED = 'Banned';
-    const STATUS_INACTIVE = 'Inactive';
     const STATUS_DELETED = 'Deleted';
+    const STATUS_INACTIVE = 'Inactive';
+    const STATUS_PENDING = 'Pending'; // Pending registration
 
 
     public static $tablePerson = 'snv_person';

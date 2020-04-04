@@ -17,6 +17,13 @@ class BaseController
         $this->userId = $userId;
     }
 
+    function userTokenCreate($person)
+    {
+        $token = \Sinevia\StringUtils::random(20);
+        \App\Plugins\CachePlugin::set($token, ['PersonId' => $person['Id']]);
+        return $token;
+    }
+
     protected function respond($jsonResponse)
     {
         $callback = (isset($_REQUEST['callback']) == false) ? '' : trim(strip_tags($_REQUEST['callback']));

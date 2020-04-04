@@ -2,11 +2,13 @@
  * If not guest, redirect to user dashboard
  */
 
-$(function () {
-    if ($$.getUser() !== null) {
-        $$.to('user/home');
+$(function() {
+  if ($$.getUser() !== null && $$.getToken() !== null) {
+    if ($$.getUser().Status == "Active") {
+      $$.to("user/home");
     }
-    if ($$.getToken() !== null) {
-        $$.to('user/home');
+    if ($$.getUser().Status == "Pending") {
+      $$.to("auth/register");
     }
+  }
 });

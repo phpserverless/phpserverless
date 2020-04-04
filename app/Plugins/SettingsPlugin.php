@@ -2,7 +2,7 @@
 
 namespace App\Plugins;
 
-class Settings
+class SettingsPlugin
 {
 
     public static $settings = [];

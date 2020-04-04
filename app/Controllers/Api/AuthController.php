@@ -47,7 +47,7 @@ class AuthController extends BaseController
                 'FirstName' => $email,
                 'LastName' => '',
                 'Email' => $email,
-                'Status' => \App\Plugins\PersonPlugin::STATUS_ACTIVE,
+                'Status' => \App\Plugins\PersonPlugin::STATUS_PENDING,
             ));
         }
 
@@ -55,8 +55,6 @@ class AuthController extends BaseController
             return $this->error('Your account failed to be created. Please try again later');
         }
 
-        //$appUser = $this->transformUserToAppUser($user);
-
-        return $this->success('Details verified successfuly', array('user' => $appUser, 'token' => $this->userTokenCreate($user)));
+        return $this->success('Details verified successfuly', array('user' => $user, 'token' => $this->userTokenCreate($user)));
     }
 }

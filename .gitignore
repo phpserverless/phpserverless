@@ -1,4 +1,5 @@
 /.phpsls
 /.phpunit.result.cache
 /composer.lock
+/database.sqlite
 /vendor/
