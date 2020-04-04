@@ -46,7 +46,7 @@ $routeName = 'home';
 
         <!-- START: Content-->
         <tr>
-            <td class="Content" align="left" valign="top" style="">
+            <td class="Content" align="left" valign="top">
                 <!-- START: Main Content -->
                 @yield('content')
                 <!-- END: Main Content -->
