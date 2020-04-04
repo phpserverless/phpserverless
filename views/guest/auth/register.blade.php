@@ -1,4 +1,4 @@
-@extends('guest.layout',['webpage_title'=>'Register'])
+@extends('guest.layout', ['webpage_title' => 'Register'])
 
 @section('content')
 <!-- START: Message Area -->
@@ -96,11 +96,14 @@
 
 @section('scripts')
 <script>
-// $(function(){
-//     if ($$.getUser().Status === "Active") {
-//         $$.to('/user');
-//     }
-// });
+$(function() {
+    if ($$.getUser() === null || $$.getToken() === null) {
+        $$.to('/');
+    }
+    if ($$.getUser().Status !== "Pending") {
+        $$.to('/');
+    }
+});
 </script>
 <!-- START: Scripts -->
 <script>
@@ -109,7 +112,7 @@
  * @param {String} error
  * @returns {Boolean}
  */
-function loginFormRaiseError(error) {
+function registrationFormRaiseError(error) {
     $('div.alert-success').html('').hide();
     $('div.alert-danger').html(error).show();
     setTimeout(function() {
@@ -118,7 +121,7 @@ function loginFormRaiseError(error) {
     return false;
 }
 
-function loginFormRaiseSuccess(success) {
+function registrationFormRaiseSuccess(success) {
     $('div.alert-danger').html('').hide();
     $('div.alert-success').html(success).show();
     setTimeout(function() {
@@ -137,15 +140,15 @@ function registrationFormValidate() {
     var lastName = $.trim($('input[name=last_name]').val());
 
     if (email === '') {
-        return loginFormRaiseError('Email is required');
+        return registrationFormRaiseError('Email is required');
     }
 
     if (firstName === '') {
-        return loginFormRaiseError('First name is required');
+        return registrationFormRaiseError('First name is required');
     }
 
     if (lastName === '') {
-        return loginFormRaiseError('Last name is required');
+        return registrationFormRaiseError('Last name is required');
     }
 
     $('.buttonRegister .imgLoading').show();
@@ -161,10 +164,10 @@ function registrationFormValidate() {
         $('.buttonRegister .imgLoading').hide();
 
         if (response.status !== "success") {
-            return loginFormRaiseError(response.message);
+            return registrationFormRaiseError(response.message);
         }
 
-        loginFormRaiseSuccess(response.message);
+        registrationFormRaiseSuccess(response.message);
         $('div.alert-danger').html('').hide();
 
         setTimeout(function() {
@@ -174,7 +177,7 @@ function registrationFormValidate() {
 
     p.fail(function(error) {
         $('.buttonRegister .imgLoading').hide();
-        return loginFormRaiseError('There was an error. Try again later!');
+        return registrationFormRaiseError('There was an error. Try again later!');
     });
 }
 $(function() {

@@ -76,7 +76,7 @@ $routeName = 'home';
     var WEBSITE_URL = "<?php echo \Sinevia\Registry::get('URL_BASE'); ?>"; // Your website root URL
     var API_URL = "<?php echo \Sinevia\Registry::get('URL_BASE'); ?>/api"; // Your website API URL
     </script>
-    <script src="https://cdn.jsdelivr.net/gh/lesichkovm/web@1.3.0/initialize.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lesichkovm/web@2.4.0/initialize.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/lesichkovm/webicons@v1.0.0/webicons.ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/lesichkovm/webicons@v1.0.0/webicons.runtime.js"></script>
     <?php

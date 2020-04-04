@@ -1,4 +1,4 @@
-@extends('guest/layout')
+@extends('guest/layout', ['webpage_title'=>'Home'])
 
 @section('content')
 

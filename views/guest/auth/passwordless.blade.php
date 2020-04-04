@@ -1,4 +1,4 @@
-@extends('guest.layout',['webpage_title'=>'Login'])
+@extends('guest.layout', ['webpage_title'=>'Login'])
 
 @section('content')
 <div class="container">
@@ -60,13 +60,13 @@
 @section('scripts')
 <script>
 $(function() {
-    var once = $$.getUrlParam('once');
+    var once = $$.getUrlParam("once");
     if (once == null) {
         $('.alert').hide();
         $('.missing-token').show();
         return;
     }
-    $$.ws('auth/passwordless', {
+    $$.ws("auth/passwordless", {
         once: once
     }).then(function(response) {
         if (response.status != "success") {
