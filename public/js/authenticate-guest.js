@@ -8,7 +8,9 @@ $(function() {
       $$.to("user/home");
     }
     if ($$.getUser().Status == "Pending") {
-      $$.to("auth/register");
+      if ($$.getUrl().indexOf("register") < 0) {
+        $$.to("auth/register");
+      }
     }
   }
 });
