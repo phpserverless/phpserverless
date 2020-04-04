@@ -36,13 +36,6 @@
                     </div>
                     <!-- END: Message Area -->
 
-                    <!-- START: Email -->
-                    <div class="form-group">
-                        <input class="form-control" placeholder="E-mail" name="email" type="text"
-                            data-i18n="Auth.Register.InputEmail" />
-                    </div>
-                    <!-- END: Email -->
-
                     <!-- START: First Name -->
                     <div class="form-group">
                         <input class="form-control" placeholder="First Name" name="first_name" type="text"
@@ -56,8 +49,6 @@
                             data-i18n="Auth.Register.InputLastName" />
                     </div>
                     <!-- END: Last Name -->
-
-                    <input type="hidden" name="sid" value="" />
 
                     <!-- START: Register -->
                     <button class="buttonRegister btn btn-lg btn-success btn-block"
@@ -131,17 +122,12 @@ function registrationFormRaiseSuccess(success) {
 }
 
 /**
- * Validate Login Form
+ * Validate Registration Form
  * @returns {Boolean}
  */
 function registrationFormValidate() {
-    var email = $.trim($('input[name=email]').val());
     var firstName = $.trim($('input[name=first_name]').val());
     var lastName = $.trim($('input[name=last_name]').val());
-
-    if (email === '') {
-        return registrationFormRaiseError('Email is required');
-    }
 
     if (firstName === '') {
         return registrationFormRaiseError('First name is required');
@@ -154,9 +140,8 @@ function registrationFormValidate() {
     $('.buttonRegister .imgLoading').show();
 
     var data = {
-        "email": email,
-        "first_name": firstName,
-        "last_name": lastName
+        "FirstName": firstName,
+        "LastName": lastName
     };
     var p = $$.ws('auth/register', data);
 
@@ -170,8 +155,10 @@ function registrationFormValidate() {
         registrationFormRaiseSuccess(response.message);
         $('div.alert-danger').html('').hide();
 
+        $$.setUser(response.data.user);
+
         setTimeout(function() {
-            $$.to('auth/login');
+            $$.to('/user');
         }, 3000);
     });
 

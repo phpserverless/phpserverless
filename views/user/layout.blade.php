@@ -39,7 +39,7 @@ $routeName = 'home';
         <!-- START: Header -->
         <tr>
             <td class="Header" align="center" valign="middle" style="height:1px;">
-                @include('guest.partial.header')
+                @include('user.partial.header')
             </td>
         </tr>
         <!-- END: Header -->
@@ -57,7 +57,7 @@ $routeName = 'home';
         <!-- START: Footer -->
         <tr>
             <td class="Footer" align="center" valign="middle" style="height:80px;">
-                @include('guest.partial.footer')
+                @include('user.partial.footer')
             </td>
         </tr>
         <!-- END: Footer -->
@@ -82,7 +82,7 @@ $routeName = 'home';
     <?php
     echo joinScripts([
         '/js/functions.js',
-        '/js/authenticate-guest.js',
+        '/js/authenticate-user.js',
     ], ['minify' => 'yes']);
     ?>
     @yield('scripts')

@@ -1,14 +1,14 @@
 /*
  * If not user, redirect to guest home
  */
-$(function() {
+$(function () {
   if ($$.getUser() === null) {
     return $$.to("/");
   }
   if ($$.getToken() === null) {
     return $$.to("/");
   }
-  if ($$.getUser().Status === "Active") {
+  if ($$.getUser().Status !== "Active") {
     return $$.to("/");
   }
   // Register, if name empty

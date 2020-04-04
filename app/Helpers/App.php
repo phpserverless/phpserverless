@@ -57,8 +57,13 @@ class App
             $router->controller('/', 'App\Controllers\Api\HomeController');
         });
 
+        $router->group(array('prefix' => '/user'), function (\Phroute\Phroute\RouteCollector $router) {
+            $router->any('/{page}?', ['App\Controllers\User\WebController', 'anyPage']);
+            $router->any('/{module}/{page}?', ['App\Controllers\User\WebController', 'anyModulePage']);
+        });
+
+
         $router->group(array('prefix' => '/'), function (\Phroute\Phroute\RouteCollector $router) {
-            //$router->controller('/', 'App\Controllers\Guest\HomeController');
             $router->any('/{page}?', ['App\Controllers\Guest\WebController', 'anyPage']);
             $router->any('/{module}/{page}?', ['App\Controllers\Guest\WebController', 'anyModulePage']);
         });
@@ -75,5 +80,14 @@ class App
         }
 
         return $response;
+    }
+
+    public static function userIdFromToken($token)
+    {
+        $cache = \App\Plugins\CachePlugin::get($token);
+        if ($cache == null) {
+            return null;
+        }
+        return $cache['PersonId'] ?? null;
     }
 }

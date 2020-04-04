@@ -32,6 +32,7 @@ class WebTest extends \Tests\BaseTest
         $this->assertStringContainsString('var once = $$.getUrlParam("once")', $response);
         $this->assertStringContainsString('if (once == null) {', $response);
         $this->assertStringContainsString('$$.ws("auth/passwordless"', $response);
+        $this->assertStringContainsString('if (response.status != "success") {', $response);
     }
 
     /**

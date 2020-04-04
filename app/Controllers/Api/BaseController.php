@@ -15,6 +15,7 @@ class BaseController
             return $this->authenticationFailed('Your session has expired');
         }
         $this->userId = $userId;
+        return true;
     }
 
     function userTokenCreate($person)

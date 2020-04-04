@@ -57,4 +57,40 @@ class AuthController extends BaseController
 
         return $this->success('Details verified successfuly', array('user' => $user, 'token' => $this->userTokenCreate($user)));
     }
+
+    function anyRegister()
+    {
+        $verifyOrAuthRequiredResponse = $this->verifyUserRequest();
+        if ($verifyOrAuthRequiredResponse !== true) {
+            return $verifyOrAuthRequiredResponse;
+        }
+
+        $firstName = trim(req('FirstName', ''));
+        $lastName = trim(req('LastName', ''));
+
+        if ($firstName == '') {
+            return $this->error('First name is required field');
+        }
+        if ($lastName == '') {
+            return $this->error('Last name is required field');
+        }
+        $person = \App\Plugins\PersonPlugin::findPersonById($this->userId);
+
+        if ($person == null) {
+            return $this->error('Person with this e-mail not found');
+        }
+
+        $isUpdated = \App\Plugins\PersonPlugin::updatePersonById($this->userId, [
+            'FirstName' => $firstName,
+            'LastName' => $lastName,
+            'Status' => \App\Plugins\PersonPlugin::STATUS_ACTIVE,
+        ]);
+
+        if ($isUpdated == true) {
+            $person = \App\Plugins\PersonPlugin::findPersonById($this->userId);
+            return $this->success("Registration was successful", ['user' => $person]);
+        }
+
+        return $this->error('Registration failed');
+    }
 }

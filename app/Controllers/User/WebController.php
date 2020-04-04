@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Guest;
+namespace App\Controllers\User;
 
 class WebController
 {
@@ -16,7 +16,7 @@ class WebController
 
     public function anyPage($page = "home")
     {
-        $namespace = "guest";
+        $namespace = "user";
         $viewPath = basePath('views/' . $namespace . '/' . $page . '.blade.php');
         if (!\file_exists($viewPath)) {
             if (\Sinevia\Registry::equals('ENVIRONMENT', 'live') == false) {
@@ -36,7 +36,7 @@ class WebController
         if ($module == 'home') {
             return $this->anyPage();
         }
-        $namespace = "guest";
+        $namespace = "user";
         $viewPath = basePath('views/' . $namespace . '/' . $module . '/' . $page . '.blade.php');
         if (!\file_exists($viewPath)) {
             if (\Sinevia\Registry::equals('ENVIRONMENT', 'live') == false) {

@@ -122,7 +122,7 @@ class PersonPlugin extends BasePlugin
      * @return boolean
      * @throws RuntimeException
      */
-    public static function updateUserById($id, $data)
+    public static function updatePersonById($id, $data)
     {
         if (isset($data['UpdatedAt']) == false) {
             $data['UpdatedAt'] = date('Y-m-d H:i:s');
