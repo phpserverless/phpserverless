@@ -1,14 +1,20 @@
+body {
+  font-size: 12px;
+}
+table {
+  font-size: 12px;
+}
 .Header {
-  background: #996655;
+  background: #333333;
 }
 .Header .navbar-brand {
   color: white;
 }
 .Footer {
-  background: #996655;
+  background: #333333;
   color: white;
 }
 .alert {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
 }

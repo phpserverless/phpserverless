@@ -1,6 +1,5 @@
 <?php
 $webpageTitle = isset($webpage_title) ? $webpage_title : 'None';
-$routeName = 'home';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +22,7 @@ $routeName = 'home';
     <!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />-->
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/yeti/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-w6tc0TXjTUnYHwVwGgnYyV12wbRoJQo9iMlC2KdkdmVvntGgzT9jvqNEF/uKaF4m" crossorigin="anonymous" />
-    <?php echo joinCss(['css/guest.css']); ?>
+    <?php echo joinCss(['css/animate.css', 'css/user.css']); ?>
     @yield('styles')
     <style>
     html,

@@ -10,6 +10,15 @@ class AuthController extends BaseController
         return $this->success('Api is working', ['time' => date('Y-m-d H:i:s')]);
     }
 
+    function anyLogout()
+    {
+        $token = trim(req('Token', ''));
+
+        \App\Plugins\CachePlugin::purge();
+        \App\Plugins\CachePlugin::delete($token);
+        return $this->success("Logout was successful", ['token' => $token]);
+    }
+
     function anyPasswordless()
     {
         $once = trim(req('once', ''));
@@ -17,8 +26,6 @@ class AuthController extends BaseController
         if ($once == '') {
             return $this->error('Once not specified');
         }
-
-        // DEBUG: $email = 'lesichkovm@gmail.com';
 
         $url = 'https://authknight.com/who?once=' . urlencode($once);
         $who = json_decode(file_get_contents($url), true);

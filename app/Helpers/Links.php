@@ -28,21 +28,6 @@ class Links extends \Sinevia\LinkUtils
         return self::buildUrl('/auth/logout', $queryData);
     }
 
-    public static function authPasswordChange($queryData = array())
-    {
-        return self::buildUrl('/auth/password-change', $queryData);
-    }
-
-    public static function authPasswordRestore($queryData = array())
-    {
-        return self::buildUrl('/auth/password-restore', $queryData);
-    }
-
-    public static function authRegister($queryData = array())
-    {
-        return self::buildUrl('/auth/register', $queryData);
-    }
-
     public static function guestHome($queryData = array())
     {
         return self::buildUrl('/', $queryData);
