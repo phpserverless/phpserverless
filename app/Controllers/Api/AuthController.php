@@ -5,12 +5,12 @@ namespace App\Controllers\Api;
 class AuthController extends BaseController
 {
 
-    function anyIndex()
+    public function anyIndex()
     {
         return $this->success('Api is working', ['time' => date('Y-m-d H:i:s')]);
     }
 
-    function anyLogout()
+    public function anyLogout()
     {
         $token = trim(req('Token', ''));
 
@@ -19,7 +19,7 @@ class AuthController extends BaseController
         return $this->success("Logout was successful", ['token' => $token]);
     }
 
-    function anyPasswordless()
+    public function anyPasswordless()
     {
         $once = trim(req('once', ''));
 
@@ -27,8 +27,10 @@ class AuthController extends BaseController
             return $this->error('Once not specified');
         }
 
-        $url = 'https://authknight.com/who?once=' . urlencode($once);
-        $who = json_decode(file_get_contents($url), true);
+        $url = 'https://authknight.com/api/who?once=' . urlencode($once);
+        $result = \file_get_contents($url);
+        // DEBUG: \file_put_contents(\basePath('tmp/' . time() . '.txt'), $result);
+        $who = \json_decode($result, true);
 
         if (
             \App\Helpers\App::environment() == "testing"
@@ -65,7 +67,7 @@ class AuthController extends BaseController
         return $this->success('Details verified successfuly', array('user' => $user, 'token' => $this->userTokenCreate($user)));
     }
 
-    function anyRegister()
+    public function anyRegister()
     {
         $verifyOrAuthRequiredResponse = $this->verifyUserRequest();
         if ($verifyOrAuthRequiredResponse !== true) {
