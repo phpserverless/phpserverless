@@ -62,19 +62,31 @@ function config($key, $default = null)
  * Returns a database instance
  * @return \Sinevia\SqlDb
  */
-function db($connectionName = null)
+function db($connectionName = "default", $persistent = true)
 {
     static $db = null;
-    if (is_null($db)) {
+
+    if (is_null($db) or $persistent == false) {
+        if (is_null($db) == false) {
+            $db->close();
+        }
 
         $databases = \Sinevia\Registry::get('DB');
-        $connection = $connectionName ?? $databases['default_connection'];
-        //dd($databases);
-        $dbType = $databases['connections'][$connection]['driver'];
-        $dbHost = $databases['connections'][$connection]['host'];
-        $dbName = $databases['connections'][$connection]['name'];;
-        $dbUser = $databases['connections'][$connection]['user'];;
-        $dbPass = $databases['connections'][$connection]['pass'];;
+        if ($connectionName == "default") {
+            $connectionName = $databases["default_connection"];
+        }
+        $connection = $databases["connections"][$connectionName] ?? null;
+        if ($connection == null) {
+            throw new RuntimeException("Connection with name '$connectionName' not found");
+        }
+        //dd($connection);
+
+        $dbType = $connection['driver'] ?? '';
+        $dbHost = $connection['host'] ?? '';
+        $dbName = $connection['database'] ?? '';
+        $dbUser = $connection['username'] ?? '';
+        $dbPass = $connection['password'] ?? '';
+
         $db = new \Sinevia\SqlDb(array(
             'database_type' => $dbType,
             'database_host' => $dbHost,
@@ -83,6 +95,7 @@ function db($connectionName = null)
             'database_pass' => $dbPass,
         ));
     }
+
     return $db;
 }
 function dd($var)
@@ -102,12 +115,20 @@ function image2DataUri($imagePath)
     return 'data:' . $type . ';base64,' . base64_encode(file_get_contents($imagePath));
 }
 
+/**
+ * Checks if this is a GET request
+ * @return boolean
+ */
 function isGet()
 {
     $isPost = strtolower($_SERVER['REQUEST_METHOD']) == "get" ? true : false;
     return $isPost;
 }
 
+/**
+ * Checks if this is a POST request
+ * @return boolean
+ */
 function isPost()
 {
     $isPost = strtolower($_SERVER['REQUEST_METHOD']) == "post" ? true : false;
