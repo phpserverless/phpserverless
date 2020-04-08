@@ -1,6 +1,6 @@
 <?php
 
-class CreateCacheTables
+class TablesSettingsCreate
 {
 
     /**
@@ -10,7 +10,7 @@ class CreateCacheTables
      */
     public function up()
     {
-        \App\Plugins\CachePlugin::createTables();
+        \App\Plugins\SettingsPlugin::createTables();
     }
 
     /**
@@ -20,6 +20,6 @@ class CreateCacheTables
      */
     public function down()
     {
-        \App\Plugins\CachePlugin::deleteTables();
+        \App\Plugins\SettingsPlugin::deleteTables();
     }
 }

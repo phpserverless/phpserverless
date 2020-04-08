@@ -1,6 +1,6 @@
 <?php
 
-class CreatePersonTables
+class TablesLogCreate
 {
 
     /**
@@ -10,7 +10,7 @@ class CreatePersonTables
      */
     public function up()
     {
-        \App\Plugins\PersonPlugin::createTables();
+        \App\Plugins\LogPlugin::createTables();
     }
 
     /**
@@ -20,6 +20,6 @@ class CreatePersonTables
      */
     public function down()
     {
-        \App\Plugins\PersonPlugin::deleteTables();
+        \App\Plugins\LogPlugin::deleteTables();
     }
 }

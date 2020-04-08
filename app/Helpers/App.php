@@ -62,7 +62,6 @@ class App
             $router->any('/{module}/{page}?', ['App\Controllers\User\WebController', 'anyModulePage']);
         });
 
-
         $router->group(array('prefix' => '/'), function (\Phroute\Phroute\RouteCollector $router) {
             $router->any('/{page}?', ['App\Controllers\Guest\WebController', 'anyPage']);
             $router->any('/{module}/{page}?', ['App\Controllers\Guest\WebController', 'anyModulePage']);
@@ -82,6 +81,11 @@ class App
         return $response;
     }
 
+    /**
+     * Returns the UserId if successful, false otherwise
+     * @param string $token
+     * @return string|null
+     */
     public static function userIdFromToken($token)
     {
         $cache = \App\Plugins\CachePlugin::get($token);
