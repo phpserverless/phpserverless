@@ -1,6 +1,6 @@
 {
     "require-dev": {
-        "lesichkovm/phpsls": "^1.8",
+        "lesichkovm/phpsls": "^1.9",
         "phpunit/phpunit": "^8.5",
         "sinevia/php-library-migrate": "^1.4"
     },
@@ -15,8 +15,8 @@
         }
     },
     "require": {
-        "dg\/composer-cleaner": "v2.1",
-        "sinevia\/php-library-serverless": "^1.7"
+        "dg/composer-cleaner": "v2.1",
+        "sinevia/php-library-serverless": "^1.7"
     },
     "extra": {
         "cleaner-ignore": {
