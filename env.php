@@ -8,8 +8,8 @@ $environment = "local"; // !!! Do not change will be modified automatically duri
 \Sinevia\Registry::setIfNotExists("DIR_BASE", __DIR__);
 \Sinevia\Registry::setIfNotExists("DIR_APP", __DIR__ . DIRECTORY_SEPARATOR . 'app');
 \Sinevia\Registry::setIfNotExists("DIR_CONFIG", __DIR__ . DIRECTORY_SEPARATOR . 'config');
-\Sinevia\Registry::setIfNotExists("DIR_MIGRATIONS", __DIR__  . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'migrations');
-\Sinevia\Registry::setIfNotExists("DIR_SEEDS", __DIR__ . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'seeds');
+\Sinevia\Registry::setIfNotExists("DIR_MIGRATIONS", __DIR__  . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'Database' . DIRECTORY_SEPARATOR . 'Migrations');
+\Sinevia\Registry::setIfNotExists("DIR_SEEDS", __DIR__ . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'Database' . DIRECTORY_SEPARATOR . 'Seeds');
 
 /*
  * LOAD ENVIRONMENT CONFIGURATIONS
